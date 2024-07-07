@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "vector": "cpp",
-        "1212_3.C": "cpp"
+        "1212_3.C": "cpp",
+        "__bit_reference": "cpp"
     }
 }
