@@ -9,14 +9,14 @@ vector<int> dijkstra(int start, int vertex, vector<pair<int, int>> graph[]) {
     vector<int> dist(vertex + 1, INT_MAX);  // 거리 저장
     priority_queue<pair<int, int>> pq;
     dist[start] = 0;
-    pq.push(make_pair(0, start)); // 거리, 노드
+    pq.push(make_pair(0, start)); // (거리, 노드)
 
     while (!pq.empty()) {
         int current_weight = -pq.top().first;
         int current = pq.top().second;
         pq.pop();
 
-        for (vector<pair<int, int>>::iterator it = graph[current].begin(); it != graph[current].end(); ++it) {
+        for(vector<pair<int, int>>::iterator it = graph[current].begin(); it != graph[current].end(); ++it) {
             int next = it->first;
             int next_weight = it->second;
             if (dist[next] > dist[current] + next_weight) {
@@ -44,6 +44,9 @@ int main() {
     cin >> must_va >> must_vb;
 
     // 1 -> A, 1 -> B, A -> B, A -> N, B -> N
+    // 다익스트라 6번돌리는거 너무 많음 3번으로 최적화 가능.
+    // ? 근데 이렇게 하면 1->A안에 1->B->A 가능성도 포함되지 않나 왜 돌아감
+    // -> 그럼 min쓰니까 자연스럽게 1->B->A->N 으로 들어감.
     vector<int> dist_from_start = dijkstra(1, nvertex, graph);
     vector<int> dist_from_A = dijkstra(must_va, nvertex, graph);
     vector<int> dist_from_B = dijkstra(must_vb, nvertex, graph);
@@ -57,7 +60,7 @@ int main() {
         dist_from_A[must_vb] == INT_MAX || dist_from_A[nvertex] == INT_MAX ||
         dist_from_B[must_va] == INT_MAX || dist_from_B[nvertex] == INT_MAX) {
         cout << "-1" << endl;
-        /*
+        /* 예외처리
         1에서 a 경로 없음, 1에서 b경로 없음
         a에서 b경로 없음, a에서 end경로 없음, b에서 a경로 없음, b에서 end경로 없음
         */
