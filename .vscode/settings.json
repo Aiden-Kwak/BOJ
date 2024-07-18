@@ -4,6 +4,7 @@
         "1212_3.C": "cpp",
         "__bit_reference": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "string": "cpp"
     }
 }

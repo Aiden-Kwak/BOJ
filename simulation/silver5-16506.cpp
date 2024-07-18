@@ -8,8 +8,8 @@ string opcodev[12]={"ADD", "SUB", "MOV", "AND",
 ,"RL", "RR"};
 
 string decimalToBinary(int decimal, int n){
-    char binary[n+1];
-    //string binary(n, '0');
+    //char binary[n+1];
+    string binary(n, '0');
     for(int i=n-1;i>=0;i--){
         int temp = (decimal >> i) & 1;
         binary[n-1-i]=temp+'0';
