@@ -27,9 +27,7 @@ void func(int k, const vector<int>& input_arr, vector<int>& current, int m, vect
             current[k] = input_arr[i];
             func(k + 1, input_arr, current, m, visited);
             visited[i]=0;
-
         }
-        
     }
 }
 
